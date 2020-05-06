@@ -10,6 +10,7 @@ def main():
     game = GameManager(consts.table_size, screen, consts.sx, consts.sy, consts.block_cells)
     snakes = list()
     for snake in consts.snakes:
+        print(snake)
         snakes.append(Snake(snake['keys'], game, (snake['sx'], snake['sy']), snake['color'], snake['direction']))
 
     while True:

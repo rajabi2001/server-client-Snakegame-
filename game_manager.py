@@ -33,7 +33,7 @@ class GameManager:
     def kill(self, killed_snake):
         self.snakes.remove(killed_snake)
 
-    def get_next_fruit_pos(self): # returns tuple (x, y) that is the fruit location
+    def get_next_fruit_pos(self):
         ret = -1, -1
         mx = -100
 
@@ -52,16 +52,17 @@ class GameManager:
                     mx = mn
                     ret = i, j
 
-            yield ret
-
+        return ret
 
     def handle(self, keys):
         for snake in self.snakes:
             snake.handle(keys)
+
+        for snake in self.snakes:
             snake.next_move()
-            self.turn +=1
-            if self.turn % 10 == 0:
-                fruit_pos = list(self.get_next_fruit_pos())
-                fruit_pos.sort()
-                self.get_cell(fruit_pos[0]).set_color(consts.fruit_color)
-            
+
+        self.turn += 1
+
+        if self.turn%10 == 0:
+            self.get_cell(self.get_next_fruit_pos()).set_color(consts.fruit_color)
+
