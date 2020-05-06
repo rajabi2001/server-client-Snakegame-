@@ -11,7 +11,12 @@ class Network:
 
     def start(self):
         self.s.connect((self.host , self.port))
-        aa = self.s.recv(1024)
+        
+        f = open("config.json" , "w")
+        f.write(json.dumps(self.s.recv(1024).decode('ascii')))
+        f.close()   
+
+        
 
     def send_data(self, keys):
         pass
