@@ -9,7 +9,7 @@ class Server:
     def __init__(self, number_of_clients, port):
 
         self.port = port
-        self.conf = ('', self.port)
+        self.conf = ('127.0.0.1', self.port)
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.bind(self.conf)
         self.number_of_clients = number_of_clients
@@ -102,5 +102,5 @@ class Server:
 
 
 if __name__ == '__main__':
-    server = Server(1)
+    server = Server(1,12345)
     server.main()

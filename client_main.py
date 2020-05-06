@@ -4,7 +4,7 @@ from network import Network
 
 def main():
     pygame.init()
-    network = Network('localhost', 12345)
+    network = Network('127.0.0.1', 12345)
     network.start()
     import consts
     from game_manager import GameManager
